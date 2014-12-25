@@ -7,5 +7,4 @@ group :test, :development do
   gem 'rspec', require: false
   gem 'pry', require: false
   gem 'rack-test', require: false
-  gem 'mini_logger', :git => "git@github.com:workshare/mini-logger.git", require: false
 end
