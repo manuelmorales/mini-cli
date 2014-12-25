@@ -13,3 +13,5 @@ require 'mini_cli'
 
 $LOAD_PATH.unshift File.expand_path('spec/support')
 
+include MiniCli
+
