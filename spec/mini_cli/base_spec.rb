@@ -22,6 +22,7 @@ describe Base do
 
   describe '#console' do
     it 'loads the environment and runs pry' do
+      expect(cli).to receive(:invoke).with(:environment)
       expect(Pry).to receive(:start)
       cli.console
     end
@@ -31,6 +32,7 @@ describe Base do
     before(:all){ require 'puma/cli' }
 
     it 'runs a Puma server' do
+      expect(cli).to receive(:invoke).with(:environment)
       expect_any_instance_of(Puma::CLI).to receive(:run)
       cli.start
     end
