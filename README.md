@@ -5,11 +5,11 @@ It provides basic commands:
 
 ```
 Commands:
-  cli auto [COMMAND]  # re-runs the given command on any file change
-  cli console         # pry console
+  cli auto [COMMAND]  # Re-runs the given command on any file change
+  cli console         # Pry console with the app available
   cli help [COMMAND]  # Describe available commands or one specific command
-  cli start           # runs the HTTP server
-  cli test            # run the rspec tests
+  cli start           # Starts the Puma and any other required thread
+  cli test            # Run the test suite
 ```
 
 
