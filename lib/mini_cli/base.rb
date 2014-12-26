@@ -22,7 +22,6 @@ module MiniCli
 
     desc 'console', 'Pry console with the app available'
     def console
-      invoke :environment
       require'pry'
       Pry.start
     end
@@ -44,7 +43,6 @@ module MiniCli
 
     desc 'start', 'Starts the Puma and any other required thread'
     def start
-      invoke :environment
       require 'puma/cli'
       Puma::CLI.new([]).run
     end
