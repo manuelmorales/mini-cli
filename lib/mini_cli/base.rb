@@ -48,12 +48,6 @@ module MiniCli
       require 'puma/cli'
       Puma::CLI.new([]).run
     end
-
-    desc 'environment', 'Loads environment.rb'
-    def environment
-      # Override requiring the right libs. Example:
-      # require_relative'../../config/environment'
-    end
   end
 end
 
