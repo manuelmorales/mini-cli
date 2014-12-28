@@ -44,7 +44,13 @@ module MiniCli
     desc 'start', 'Starts the Puma and any other required thread'
     def start
       require 'puma/cli'
-      Puma::CLI.new([]).run
+      Puma::CLI.new(puma_args).run
+    end
+
+    private
+
+    def puma_args
+      %w{-p 22000}
     end
   end
 end

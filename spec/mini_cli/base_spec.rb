@@ -31,7 +31,9 @@ describe Base do
     before(:all){ require 'puma/cli' }
 
     it 'runs a Puma server' do
-      expect_any_instance_of(Puma::CLI).to receive(:run)
+      a_puma = double('a puma')
+      expect(Puma::CLI).to receive(:new).with(['-p', '22000']).and_return a_puma
+      expect(a_puma).to receive(:run)
       cli.start
     end
   end
