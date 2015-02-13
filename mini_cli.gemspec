@@ -10,8 +10,8 @@ Gem::Specification.new do |spec|
   spec.version       = MiniCli::VERSION
   spec.authors       = ["Manuel Morales"]
   spec.email         = ['manuelmorales@gmail.com']
-  spec.description   = File.read('README.md').split("\n").reject{|l| l.length == 0 || l =~ /^[#=]+/ }.first
-  spec.summary       = spec.description
+  spec.description   = "CLI for microservices"
+  spec.summary       = "A Thor based CLI for services and Ruby apps."
   spec.homepage      = "https://github.com/manuelmorales/#{spec.name.gsub('_','-')}"
   spec.license       = "MIT"
 
@@ -21,9 +21,9 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_runtime_dependency 'thor', '~> 0.19'
-  spec.add_runtime_dependency 'rerun'
-  spec.add_runtime_dependency 'puma'
+  spec.add_runtime_dependency 'rerun', '~> 0.10'
+  spec.add_runtime_dependency 'puma', '~> 2.10'
 
   spec.add_development_dependency "bundler", "~> 1.3"
-  spec.add_development_dependency "rake"
+  spec.add_development_dependency "rake", '~> 10.4'
 end

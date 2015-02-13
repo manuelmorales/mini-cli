@@ -8,14 +8,14 @@ module MiniCli
     def self.start
       require 'benchmark'
       bm = Benchmark.measure { |x| super }
-      puts "\n#{bm.total.round(3)} s execution time\n\n"
+      puts "\n#{bm.total.round(3)}s task run time"
     end
 
     desc 'test', 'Run the test suite'
     def test *args
       args = ['spec'] if args.empty?
 
-      require_relative '../../spec/spec_helper'
+      require 'spec/spec_helper'
 
       RSpec::Core::Runner.run(args)
     end
