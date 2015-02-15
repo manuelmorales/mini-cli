@@ -37,7 +37,9 @@ module MiniCli
       end
 
       def add_start_puma opts = {}
-        puma_args = opts[:puma_args] || []
+        opts = opts.dup
+        puma_args = opts.delete(:puma_args) || []
+        raise("Unrecognized options #{opts.inspect}") if opts.keys.any?
 
         desc 'start', 'Starts the Puma and any other required thread'
         define_method :start do
