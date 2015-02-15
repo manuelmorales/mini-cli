@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+require 'bundler'
+Bundler.require(:test, :default, :development)
+
+require 'thor'
+require_relative 'lib/mini_cli'
+
+class CLI < Thor
+  include MiniCli::BaseModule
+  add_test_rspec
+end
+
+CLI.start
+
