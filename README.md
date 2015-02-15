@@ -1,9 +1,13 @@
 # MiniCli
 
-Simple command line interface for microservices built using Thor.
-It provides basic commands:
+The idea behind MiniCli is that apps should provide a common entry point that is self-explanatory.
+A single executable script that lists all you can do with the app and some help about it.
+This makes it very easy for new developers to use your app.
+I. e:
 
 ```
+> ./cli
+
 Commands:
   cli auto [COMMAND]  # Re-runs the given command on any file change
   cli console         # Pry console with the app available
@@ -12,15 +16,20 @@ Commands:
   cli test            # Run the test suite
 ```
 
-
-## Usage
-
-Inherit from MiniCli::Base to provide the basic commands:
+MiniCli it provides a set of easy to include ready-made Thor commands to help achieve that.
+Ideally, libraries that provides their own commands would also provide this easy to include commands:
 
 ```ruby
 require 'mini_cli'
 
-class Cli < MiniCli::Base
+class CLI < Thor
+  include MiniCli::BaseModule
+
+  add_startup_benchmark
+  add_start_puma puma_args: %w{-p 22000}
+  add_console_pry
+  add_test_rspec
+  add_auto_rerun
 end
 ```
 
@@ -30,7 +39,7 @@ Invoke it as a regular Thor class:
 #!/usr/bin/env ruby
 
 require_relative 'cli'
-PatioSessions::Cli.start
+CLI.start
 ```
 
 
