@@ -14,9 +14,6 @@ module MiniCli
     desc 'test', 'Run the test suite'
     def test *args
       args = ['spec'] if args.empty?
-
-      require 'spec/spec_helper'
-
       RSpec::Core::Runner.run(args)
     end
 
