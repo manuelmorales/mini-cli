@@ -50,9 +50,9 @@ module MiniCli
 
       def add_startup_benchmark
         # Shows execution time to the end of the run
-        def self.start
+        def self.start *args
           require 'benchmark'
-          bm = Benchmark.measure { |x| super }
+          bm = Benchmark.measure { |x| super *args }
           puts "\n#{bm.total.round(3)}s task run time"
         end
       end
