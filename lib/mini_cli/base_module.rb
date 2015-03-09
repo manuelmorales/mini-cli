@@ -50,10 +50,11 @@ module MiniCli
 
       def add_startup_benchmark
         # Shows execution time to the end of the run
-        def self.start *args
+        def self.start(given_args = ARGV, config = {})
+          config[:shell] ||= Thor::Base.shell.new
           require 'benchmark'
-          bm = Benchmark.measure { |x| super *args }
-          puts "\n#{bm.total.round(3)}s task run time"
+          bm = Benchmark.measure { |x| super given_args, config }
+          config[:shell].say "\n#{bm.total.round(3)}s task run time"
         end
       end
     end
