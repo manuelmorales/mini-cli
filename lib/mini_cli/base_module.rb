@@ -30,6 +30,7 @@ module MiniCli
             '--background', 
             '--name', "./cli #{args.first}",
             '--signal', 'ABRT',
+            '--ignore', 'coverage/*',
           ]
 
           Rerun::Runner.keep_running("./cli #{args.join " "}", options)
