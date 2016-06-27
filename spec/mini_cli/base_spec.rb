@@ -4,6 +4,8 @@ describe Base do
   let(:cli){ Base.new }
 
   describe '#test' do
+    before { allow(cli).to receive(:exit) }
+
     it 'runs the RSpec suite' do
       expect(RSpec::Core::Runner).to receive(:run)
       cli.test
@@ -16,6 +18,12 @@ describe Base do
 
     it 'passes ["spec"] if no args are specified' do
       expect(RSpec::Core::Runner).to receive(:run).with(['spec'])
+      cli.test
+    end
+
+    it 'exits with the returned status code' do
+      expect(RSpec::Core::Runner).to receive(:run).and_return 99
+      expect(cli).to receive(:exit).with 99
       cli.test
     end
   end

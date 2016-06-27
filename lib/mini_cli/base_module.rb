@@ -15,7 +15,7 @@ module MiniCli
         define_method :test do |*args|
           args = ['spec'] if args.empty?
           require 'rspec'
-          RSpec::Core::Runner.run(args)
+          exit(RSpec::Core::Runner.run(args))
         end
       end
 
