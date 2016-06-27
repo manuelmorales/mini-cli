@@ -58,6 +58,14 @@ module MiniCli
           config[:shell].say "\n#{bm.total.round(3)}s task run time"
         end
       end
+
+      def add_rubocop
+        desc 'rubocop', 'Runs rubocop'
+        define_method :rubocop do |*args|
+          require 'rubocop'
+          exit(RuboCop::CLI.new.run)
+        end
+      end
     end
 
     def self.included klass

@@ -56,5 +56,17 @@ describe Base do
       cli.auto 'sample command'
     end
   end
+
+  describe '#rubocop' do
+    before(:all){ require 'rubocop' }
+
+    it 'runs a Puma server' do
+      a_cop = double('rubocop')
+      expect(RuboCop::CLI).to receive(:new).and_return a_cop
+      expect(a_cop).to receive(:run).and_return 99
+      expect(cli).to receive(:exit).with 99
+      cli.rubocop
+    end
+  end
 end
 

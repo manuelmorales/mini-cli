@@ -9,6 +9,7 @@ module MiniCli
     add_console_pry
     add_test_rspec
     add_auto_rerun
+    add_rubocop
   end
 end
 
