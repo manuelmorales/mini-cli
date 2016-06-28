@@ -63,7 +63,7 @@ module MiniCli
         desc 'rubocop', 'Runs rubocop'
         define_method :rubocop do |*args|
           require 'rubocop'
-          exit(RuboCop::CLI.new.run)
+          exit(RuboCop::CLI.new.run args)
         end
       end
     end

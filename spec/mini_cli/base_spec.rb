@@ -2,6 +2,7 @@ require_relative '../spec_helper'
 
 describe Base do
   let(:cli){ Base.new }
+  before { allow(cli).to receive(:exit) }
 
   describe '#test' do
     before { allow(cli).to receive(:exit) }
@@ -59,13 +60,25 @@ describe Base do
 
   describe '#rubocop' do
     before(:all){ require 'rubocop' }
+    let(:args) { %w{rubocop some args} }
 
-    it 'runs a Puma server' do
+    def do_run
+      cli.invoke_command cli.class.all_commands[args.first], args[1..-1]
+    end
+
+    it 'runs rubocop' do
       a_cop = double('rubocop')
       expect(RuboCop::CLI).to receive(:new).and_return a_cop
       expect(a_cop).to receive(:run).and_return 99
       expect(cli).to receive(:exit).with 99
-      cli.rubocop
+      do_run
+    end
+
+    it 'passes the args' do
+      a_cop = double('rubocop')
+      expect(RuboCop::CLI).to receive(:new).and_return a_cop
+      expect(a_cop).to receive(:run).with(['some', 'args'])
+      do_run
     end
   end
 end
