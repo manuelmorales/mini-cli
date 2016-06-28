@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    mini_cli (0.2.0)
+    mini_cli (0.2.1)
       puma (> 2.10, < 4.0.0)
       rerun (~> 0.10)
       rubocop
