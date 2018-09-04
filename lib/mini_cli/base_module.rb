@@ -27,7 +27,7 @@ module MiniCli
           require 'rerun'
 
           options = Rerun::Options.parse [
-            '--background', 
+            '--background',
             '--name', "./cli #{args.first}",
             '--signal', 'ABRT',
             '--ignore', 'coverage/*',
