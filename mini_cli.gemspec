@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_runtime_dependency 'thor', '~> 0.19'
-  spec.add_runtime_dependency 'rerun', '~> 0.10'
+  spec.add_runtime_dependency 'rerun', '0.10.0'
   spec.add_runtime_dependency 'puma', '> 2.10', '< 4.0.0'
   spec.add_runtime_dependency 'rubocop', '~> 0.49.0'
 
